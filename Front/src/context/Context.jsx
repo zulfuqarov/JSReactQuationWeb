@@ -34,15 +34,16 @@ const Context = ({ children }) => {
 
     const GetQuationsData = async () => {
         ResetAllData()
-        const res = await axios.get(`https://opentdb.com/api.php?amount=10&difficulty=hard&type=multiple`)
-        console.log(res.data.results)
-        const AllData = res.data.results.map((oneMap) => (
+        const res = await axios.get(`http://localhost:5555/api/Quations/`)
+        console.log(res.data)
+        const AllData = res.data.map((oneMap) => (
             {
                 ...oneMap,
                 AllAnswer: RandomAnswer([...oneMap.incorrect_answers, oneMap.correct_answer])
             }
         ))
-        setData(AllData)
+        const RandomArrnQuations = RandomAnswer(AllData)
+        setData(RandomArrnQuations)
     }
 
     const ClikQuations = async (e) => {
@@ -53,7 +54,7 @@ const Context = ({ children }) => {
         setSelectionAnswer([...SelectionAnswer, e.target.value])
         setCount(Count + 1)
         setSecond(30)
-        if (Count == 9) {
+        if (Count == 13) {
             setModal(true)
             navigate('/Score');
         }
@@ -64,10 +65,10 @@ const Context = ({ children }) => {
             if (Second > 0) {
                 setSecond(Second - 1)
             }
-            if (Second == 0 && Count < 10) {
+            if (Second == 0 && Count < 14) {
                 setCount(Count + 1)
                 setSecond(30)
-            } else if (Count >= 10) {
+            } else if (Count >= 15) {
                 setModal(true)
                 navigate('/Score');
             }
