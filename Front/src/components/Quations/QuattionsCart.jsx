@@ -21,7 +21,7 @@ const QuattionsCart = () => {
     if (context.Data.length > 0) {
         return (
 
-            <div className='w-full h-[100vh] flex flex-col justify-center items-center QuationsBgFon'>
+            <div className='w-full h-[100%] flex flex-col justify-center items-center QuationsBgFon'>
                 <div className='BgGlassEfect py-[50px] px-[50px] rounded-xl'>
                     <div className='flex justify-center items-center bg-black rounded-[50px] w-[50px] h-[50px]'>
                         <p className='text-white text-[22px] font-semibold'>{context.Second}</p>
@@ -29,13 +29,14 @@ const QuattionsCart = () => {
                     <div>
                         <div className='flex py-[30px]'>
                             <p className='pr-[20px] text-[22px] font-bold'>{context.Count + 1}</p>
-                            <p className='text-[22px] font-bold '>{context.Data[context.Count].question}</p>
+                            <p className='text-[22px] font-bold max-[768px]:text-[18px]'>{context.Data[context.Count].question}</p>
                         </div>
-                        <div className='grid grid-cols-2'>
+                        <div className=''>
                             {
                                 context.Data[context.Count].AllAnswer.map((oneMap, index) => (
                                     <div key={index} className='flex justify-between'>
-                                        <button onClick={context.ClikQuations} value={oneMap} className='hover:bg-gray-200 rounded-xl transition-all bg-gray-500 w-full mx-[5px] my-[5px] h-auto p-[10px] text-[18px] font-bold text-white hover:text-black'>{oneMap}</button>
+                                        {/* <button onClick={context.ClikQuations} value={oneMap} className='hover:bg-gray-200 rounded-xl transition-all bg-gray-500 w-full mx-[5px] my-[5px] h-auto p-[10px] text-[18px] font-bold text-white hover:text-black'>{oneMap}</button> */}
+                                        <button  onClick={context.ClikQuations} value={oneMap} className="rounded-xl break-all	 bg-gray-500 hover:bg-gray-200 hover:text-black px-4 py-4 mx-[5px] my-[5px] text-white font-semibold text-[17px] w-full transition-all  overflow-auto whitespace-normal">{oneMap}</button>
                                     </div>
                                 ))
                             }

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.HomeBgFon {
+/* .HomeBgFon {
   background-image: url(https://wallpaperaccess.com/full/3949083.jpg);
   width: 100%;
   height: 100vh;
@@ -17,10 +17,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
-}
-.BgGlassEfect{
+} */
+.BgGlassEfect {
   background-color: rgba(255, 255, 255, 0.5); /* Beyaz ve %50 opaklık */
-
 }
-
