@@ -17,8 +17,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
 .BgGlassEfect{
   background-color: rgba(255, 255, 255, 0.5); /* Beyaz ve %50 opaklık */
 
 }
+

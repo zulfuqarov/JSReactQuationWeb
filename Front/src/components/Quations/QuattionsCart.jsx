@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react'
-import { ContextQuations } from "../../context/Context"
-
+import { ContextQuations, } from "../../context/Context"
+import { useParams } from 'react-router-dom'
 
 const QuattionsCart = () => {
-
+    const { name } = useParams()
     const context = useContext(ContextQuations)
 
     useEffect(() => {
-        context.GetQuationsData()
+        context.GetQuationsData(name)
     }, [])
 
     useEffect(() => {

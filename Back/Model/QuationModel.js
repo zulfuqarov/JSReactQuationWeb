@@ -19,6 +19,10 @@ const Quations = mongoose.Schema({
       required: true,
     },
   ],
+  explanation: {
+    type: String,
+    required: true,
+  },
 });
 
 export default mongoose.model("Quations", Quations);

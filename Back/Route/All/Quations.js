@@ -14,9 +14,12 @@ route.post("/AddQuations", async (req, res) => {
   }
 });
 
-route.get("/", async (req, res) => {
+route.get("/:category", async (req, res) => {
+  const { category } = req.params;
   try {
-    const Quations = await QuationModel.find();
+    const Quations = await QuationModel.find({
+      category: category,
+    });
     res.status(200).json(Quations);
   } catch (error) {
     res.status(400).json({ message: "serverde xet bash verdi", error });

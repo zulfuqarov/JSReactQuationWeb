@@ -7,6 +7,7 @@ const AddQuations = () => {
         category: '',
         question: '',
         correct_answer: '',
+        explanation: '',
         incorrect_answers: []
     })
 
@@ -15,7 +16,6 @@ const AddQuations = () => {
         if (name === "incorrect_answers") {
             const index = parseInt(e.target.getAttribute("data-index"));
             const newIncorrectAnswers = [...Data.incorrect_answers];
-            console.log(newIncorrectAnswers)
             newIncorrectAnswers[index] = value;
             setData({
                 ...Data,
@@ -31,13 +31,20 @@ const AddQuations = () => {
     }
 
     const AddAnswer = async () => {
-        console.log(Data)
+        setData({
+            category: '',
+            question: '',
+            correct_answer: '',
+            explanation: '',
+            incorrect_answers: []
+        })
         try {
             const res = await axios.post('http://localhost:5555/api/Quations/AddQuations', Data)
             setData({
                 category: '',
                 question: '',
                 correct_answer: '',
+                explanation: '',
                 incorrect_answers: []
             })
             console.log(res.data)
@@ -76,7 +83,10 @@ const AddQuations = () => {
                 <input onChange={onChangeInput} data-index={0} name="incorrect_answers" type="text" placeholder='Yanlış Cavab' className='mt-[5px] text-center text-[22px] p-[10px] rounded-xl border-solid border-2 border-gray-600' />
                 <input onChange={onChangeInput} data-index={1} name="incorrect_answers" type="text" placeholder='Yanlış Cavab' className='mt-[5px] text-center text-[22px] p-[10px] rounded-xl border-solid border-2 border-gray-600' />
                 <input onChange={onChangeInput} data-index={2} name="incorrect_answers" type="text" placeholder='Yanlış Cavab' className='mt-[5px] text-center text-[22px] p-[10px] rounded-xl border-solid border-2 border-gray-600' />
-
+            </div>
+            <div className='flex w-[500px] flex-col rounded-xl border-solid border-2 border-gray-600 p-[10px] mt-[20px]'>
+                <label className='text-center text-[22px] pb-[20px]' htmlFor="">İzahat</label>
+                <input onChange={onChangeInput} value={Data.explanation} name="explanation" type="text" placeholder='Yanlış Cavab' className='mt-[5px] text-center text-[22px] p-[10px] rounded-xl border-solid border-2 border-gray-600' />
             </div>
 
             <button onClick={AddAnswer} className='mt-[30px] text-[22px] border-solid border-2 border-gray-600 p-[10px] rounded-xl w-[200px]' >Suall Əlavə Et</button>

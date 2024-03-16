@@ -32,9 +32,9 @@ const Context = ({ children }) => {
         setModal(false)
     }
 
-    const GetQuationsData = async () => {
+    const GetQuationsData = async (url) => {
         ResetAllData()
-        const res = await axios.get(`http://localhost:5555/api/Quations/`)
+        const res = await axios.get(`http://localhost:5555/api/Quations/${url}`)
         console.log(res.data)
         const AllData = res.data.map((oneMap) => (
             {
@@ -54,7 +54,7 @@ const Context = ({ children }) => {
         setSelectionAnswer([...SelectionAnswer, e.target.value])
         setCount(Count + 1)
         setSecond(30)
-        if (Count == 13) {
+        if (Count == (Data.length - 1)) {
             setModal(true)
             navigate('/Score');
         }
@@ -65,10 +65,10 @@ const Context = ({ children }) => {
             if (Second > 0) {
                 setSecond(Second - 1)
             }
-            if (Second == 0 && Count < 14) {
+            if (Second == 0 && Count < Data.length) {
                 setCount(Count + 1)
                 setSecond(30)
-            } else if (Count >= 15) {
+            } else if (Count >= (Data.length + 1)) {
                 setModal(true)
                 navigate('/Score');
             }
