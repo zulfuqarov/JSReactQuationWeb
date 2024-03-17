@@ -1,16 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ContextQuations } from '../context/Context';
-
+import { useNavigate } from 'react-router-dom';
 const Score = () => {
+    const navigate = useNavigate()
     const context = useContext(ContextQuations);
 
     const [ModalIndex, setModalIndex] = useState(null)
+
     const ShowModal = (index) => {
         setModalIndex(index)
     }
     const HiddenModal = () => {
         setModalIndex(null)
     }
+    useEffect(() => {
+        if (context.Data.length === 0) {
+            navigate('/')
+        }
+    }, [])
 
     return (
         <div className='w-full h-[100%] flex flex-col justify-center items-center QuationsBgFon pb-[50px]'>
